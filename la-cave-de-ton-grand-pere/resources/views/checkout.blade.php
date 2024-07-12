@@ -76,8 +76,8 @@
                             <input type="text" id="card_number" name="card_number" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="total">Total</label>
-                            <input type="number" id="total" name="total" class="form-control" step="0.01" required>
+                            <p><strong>Total: {{ $total }} €</strong></p>
+                            <input type="hidden" id="total" name="total" value="{{ $total }}">
                         </div>
                         <button type="submit" class="btn btn-primary">Valider la commande</button>
                     </form>

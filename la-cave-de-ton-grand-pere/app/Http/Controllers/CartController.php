@@ -16,11 +16,7 @@ class CartController extends Controller
             abort(404);
         }
 
-        $cart = session()->get('cart');
-
-        if (!$cart) {
-            $cart = [];
-        }
+        $cart = session()->get('cart', []);
 
         if (isset($cart[$productId])) {
             $cart[$productId]['quantity']++;
@@ -38,20 +34,24 @@ class CartController extends Controller
 
     public function viewCart()
     {
-        $cart = session()->get('cart');
-
+        $cart = session()->get('cart', []);
         return view('cart', compact('cart'));
     }
 
     public function showCheckoutForm(Request $request)
     {
-        $cart = $request->session()->get('cart');
+        $cart = $request->session()->get('cart', []);
     
         if (empty($cart)) {
             return redirect()->route('cart.view')->with('error', 'Votre panier est vide.');
         }
+
+        $total = 0;
+        foreach ($cart as $item) {
+            $total += $item['product']->price * $item['quantity'];
+        }
     
-        return view('checkout', compact('cart'));
+        return view('checkout', compact('cart', 'total'));
     }    
 
     public function processOrder(Request $request)
