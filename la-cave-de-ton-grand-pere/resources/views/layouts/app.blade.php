@@ -3,23 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Boutique de Bières</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <style>
-        body {
-            background-color: #8B4513; 
-            color: #333; 
-        }   
+        h1.navbar-brand {
+        font-style: normal;
+        color: #000000;
+        text-decoration: none;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    a.nav-link {
+        color: #000000;
+        text-decoration: none;
+    }
+
+    li {
+        display : inline-block;
+        width : 33%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    body {
+        background-color: #c18a62; 
+        color: #333; 
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }    
         .jumbotron {
             background-color: #ffffff; 
             color: #333;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid #8B4513; 
+            border: 1px solid #c18a62; 
             border-radius: 10px;
         }
         .feature-box {
-            border: 1px solid #8B4513; 
+            border: 1px solid #c18a62; 
             padding: 20px;
             margin-bottom: 20px;
             background-color: #fff;
@@ -36,10 +57,7 @@
         <!-- Barre de navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <H1 class="navbar-brand">La cave de ton grand père</H1>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -47,9 +65,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Produits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.view') }}">Panier</a>
@@ -64,9 +79,6 @@
     </main>
     <footer class="footer">
         <!-- Pied de page -->
-        <div class="container">
-            <span class="text-muted">© {{ date('Y') }} {{ config('app.name', 'Laravel') }}</span>
-        </div>
     </footer>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Autres scripts -->
