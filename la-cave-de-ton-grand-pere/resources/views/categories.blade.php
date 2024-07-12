@@ -10,20 +10,23 @@
         </div>
         <div class="row">
             @foreach ($products as $product)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">{{ $product->name }}</h2>
-                            <img src="{{ asset('img/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text"><strong>Prix: {{ $product->price }} €</strong></p>
-                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Ajouter au Panier</button>
-                            </form>
+                @if ($product->promo == false)
+                    @continue
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">{{ $product->name }}</h2>
+                                <img src="{{ asset('img/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                                <p class="card-text">{{ $product->description }}</p>
+                                <p class="card-text"><strong>Prix: {{ $product->price }} €</strong></p>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Ajouter au Panier</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             @endforeach
         </div>
     </div>
