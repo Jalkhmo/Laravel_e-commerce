@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -15,27 +16,21 @@ class CartController extends Controller
             abort(404);
         }
 
-        // Récupérer le panier actuel de la session
         $cart = session()->get('cart');
 
-        // Si le panier est vide, initialiser un tableau vide
         if (!$cart) {
             $cart = [];
         }
 
-        // Vérifier si le produit est déjà dans le panier
         if (isset($cart[$productId])) {
-            // Augmenter la quantité du produit existant
             $cart[$productId]['quantity']++;
         } else {
-            // Ajouter le produit au panier avec une quantité de 1
             $cart[$productId] = [
                 'product' => $product,
                 'quantity' => 1,
             ];
         }
 
-        // Mettre à jour la session avec le nouveau panier
         session()->put('cart', $cart);
 
         return redirect()->back()->with('success', 'Produit ajouté au panier avec succès!');
@@ -43,10 +38,43 @@ class CartController extends Controller
 
     public function viewCart()
     {
-        // Récupérer le panier actuel de la session
         $cart = session()->get('cart');
 
-        // Charger la vue du panier avec les produits du panier
         return view('cart', compact('cart'));
+    }
+
+    public function showCheckoutForm(Request $request)
+    {
+        $cart = $request->session()->get('cart');
+    
+        if (empty($cart)) {
+            return redirect()->route('cart.view')->with('error', 'Votre panier est vide.');
+        }
+    
+        return view('checkout', compact('cart'));
+    }    
+
+    public function processOrder(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'phone_number' => 'required|string',
+            'card_number' => 'required|string',
+            'total' => 'required|numeric',
+        ]);
+
+        $order = new Order();
+        $order->email = $request->email;
+        $order->product_list = json_encode($request->session()->get('cart')); 
+        $order->address = $request->address;
+        $order->phone_number = $request->phone_number;
+        $order->card_number = $request->card_number;
+        $order->total = $request->total;
+        $order->save();
+
+        $request->session()->forget('cart'); 
+
+        return redirect()->route('home')->with('success', 'Commande enregistrée avec succès !');
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier - Boutique de Bières</title>
+    <title>Panier - La cave de ton Grand Pères</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <style>
         h1.navbar-brand {
@@ -58,7 +58,10 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <H1 class="navbar-brand">La cave de ton grand père</H1>
+                <a class="navbar-brand" href="#">La cave de ton Grand Pères</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -95,7 +98,6 @@
                                 @foreach ($cart as $item)
                                     <div class="row align-items-center">
                                         <div class="col-md-3">
-                                        <div class="col-md-6">
                                             <h4>{{ $item['product']->name }}</h4>
                                             <p>{{ $item['product']->description }}</p>
                                         </div>
@@ -108,6 +110,11 @@
                                 @endforeach
                             </div>
                         </div>
+                        <form action="{{ route('cart.checkout') }}" method="GET">
+                            @csrf
+                            <input type="hidden" name="product_list" value="{{ json_encode($cart) }}">
+                            <button type="submit" class="btn btn-primary">Valider le Panier</button>
+                        </form>
                     @endif
                     <a href="{{ route('home') }}" class="btn btn-primary">Continuer vos achats</a>
                 </div>

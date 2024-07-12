@@ -11,3 +11,6 @@ Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->n
 Route::get('/view-cart', [CartController::class, 'viewCart'])->name('cart.view');
 
 Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('/checkout', [CartController::class, 'showCheckoutForm'])->name('cart.checkout');
+Route::post('/process-order', [CartController::class, 'processOrder'])->name('cart.process');

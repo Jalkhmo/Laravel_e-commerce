@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('total', 8, 2);
+            $table->string('email');
+            $table->string('product_list');
+            $table->string('address');
+            $table->string('phone_number', 20);
+            $table->string('card_number', 20); 
+            $table->decimal('total', 10, 2); 
             $table->string('status')->default('pending');
             $table->timestamps();
+            
         });
     }
     
