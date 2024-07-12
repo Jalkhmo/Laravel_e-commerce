@@ -1,3 +1,6 @@
+Aurélien Bizien et Jade Ponthieu \
+ESGI2
+
 # Laravel_e-commerce
 
 Projet de 2e année sur 2 jours pour la découverte de Laravel \
