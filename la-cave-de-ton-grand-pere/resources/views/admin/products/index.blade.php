@@ -21,6 +21,7 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->categorie }}</td>
                     <td>
                         <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Modifier</a>
                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">

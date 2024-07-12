@@ -6,7 +6,57 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
-        /* Ajoutez vos styles CSS personnalisés ici */
+        h1.navbar-brand {
+            font-style: normal;
+            color: #000000;
+            text-decoration: none;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        a.nav-link {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        li.nav-item {
+            display : inline-block;
+            width : 33%;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        body {
+            background-color: #c18a62; 
+            color: #333; 
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }   
+        
+        .jumbotron {
+            background-color: #ffffff; 
+            color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #c18a62; 
+            border-radius: 10px;
+        }
+        .feature-box {
+            border: 1px solid #c18a62; 
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        .card-body {
+            border: 1px solid #000000; 
+        }
+
+        a.cat{
+            color: #62C1BA;
+            font-size: 18px;
+            font-weight:100;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -14,7 +64,7 @@
         <!-- Barre de navigation -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Admin Panel</a>
+                <H1 class="navbar-brand" href="#">Admin Panel</H1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
