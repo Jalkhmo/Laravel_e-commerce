@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - La cave de ton Grand Père</title>
+    <title>Accueil - Boutique de Bières</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <style>
         h1.navbar-brand {
@@ -19,7 +19,7 @@
             text-decoration: none;
         }
 
-        li {
+        li.nav-item {
             display : inline-block;
             width : 33%;
             text-align: center;
@@ -63,7 +63,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <h1 class="navbar-brand" href="#">La cave de ton Grand Père</h1>
+                <H1 class="navbar-brand">La cave de ton grand père</H1>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
@@ -83,7 +83,7 @@
     <main>
         <div class="jumbotron jumbotron-fluid">
             <div class="container text-center">
-                <h1 class="display-4">Bienvenue sur la La cave de ton Grand Pères</h1>
+                <h1 class="display-4">Bienvenue sur la Boutique de Bières</h1>
                 <p class="lead">Découvrez notre sélection de bières artisanales de qualité.</p>
             </div>
         </div>

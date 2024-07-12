@@ -49,8 +49,32 @@
         .card-body {
             border: 1px solid #000000; 
         }
+
+        img{
+            width: 200px; 
+            height: auto;
+        }
+
+        button{
+            background-color: #62C1BA;
+            color: #000000;
+            border: none; 
+            padding: 15px 32px; 
+            text-align: center; 
+            display: inline-block; 
+            font-size: 16px;
+            margin: 4px 2px; 
+            cursor: pointer; 
+            border-radius: 12px;
+        }
+
+        h2.card-body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        div.card-body{
+            border: 0ch;
+        }
     </style>
-    <!-- Autres stylesheets -->
 </head>
 <body>
     <header>

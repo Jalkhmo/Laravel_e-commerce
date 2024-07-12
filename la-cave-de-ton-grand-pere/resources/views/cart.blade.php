@@ -46,12 +46,24 @@
             background-color: #fff;
             border-radius: 10px;
         }
-        .card-body {
-            border: 1px solid #000000; 
-        }
+    
         a.btn{
             color: #000000;
         }
+
+        button{
+            background-color: #62C1BA;
+            color: #000000;
+            border: none; 
+            padding: 15px 32px; 
+            text-align: center; 
+            display: inline-block; 
+            font-size: 16px;
+            margin: 4px 2px; 
+            cursor: pointer; 
+            border-radius: 12px;
+        }
+        
     </style>
 </head>
 <body>
@@ -112,6 +124,7 @@
                             <input type="hidden" name="product_list" value="{{ json_encode($cart) }}">
                             <button type="submit" class="btn btn-primary">Valider le Panier</button>
                         </form>
+                        <br>
                     @endif
                     <a href="{{ route('home') }}" class="btn btn-primary">Continuer vos achats</a>
                 </div>
