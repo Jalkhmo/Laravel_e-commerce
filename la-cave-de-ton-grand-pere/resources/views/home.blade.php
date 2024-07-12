@@ -75,6 +75,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.view') }}">Panier</a>
                         </li>
+                        <!-- Liens vers l'administration -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.categories.index') }}">Gérer les Catégories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.products.index') }}">Gérer les Produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.orders.index') }}">Voir les Commandes</a>
+                        </li>
                     </ul>
                 </div>
             </div>
