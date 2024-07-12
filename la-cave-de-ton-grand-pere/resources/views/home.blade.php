@@ -57,6 +57,10 @@
             font-weight:100;
             text-decoration: none;
         }
+        img {
+            width: 10%;
+            height: 10%;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +79,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.view') }}">Panier</a>
                         </li>
-                        <!-- Liens vers l'administration -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.categories.index') }}">Gérer les Catégories</a>
                         </li>
@@ -113,15 +116,78 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="feature-box">
                         <h2>Promotions</h2>
-                        <p>Profitez de nos promotions spéciales sur une sélection de bières.</p>
+                        @if ($promotions->count() > 0)
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{ asset('img/' . $promotions[0]->image) }}" alt="{{ $promotions[0]->name }}">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ $promotions[0]->name }}</h5>
+                                    <p>{{ $promotions[0]->description }}</p>
+                                    <p>Prix : {{ $promotions[0]->price }} €</p>
+                                </div>
+                            </div>
+                            <div style="text-align:center; margin-top:10px;">
+                                <button class="btn btn-primary" onclick="prevPromotion()" disabled>Promotion Précédente</button>
+                                <button class="btn btn-primary" onclick="nextPromotion()" {{ $promotions->count() == 1 ? 'disabled' : '' }}>Promotion Suivante</button>
+                            </div>
+                        @else
+                            <p>Aucune promotion en ce moment.</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        var currentPromotionIndex = 0;
+        var promotionsCount = {{ $promotions->count() }};
+
+        function showPromotion(index) {
+            var promotion = document.querySelector('.carousel-item');
+            promotion.innerHTML = `
+                <img class="d-block w-100" src="{{ asset('img/') }}/${promotions[index].image}" alt="${promotions[index].name}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>${promotions[index].name}</h5>
+                    <p>${promotions[index].description}</p>
+                    <p>Prix : ${promotions[index].price} €</p>
+                </div>
+            `;
+            currentPromotionIndex = index;
+            updateButtonsState();
+        }
+
+        function prevPromotion() {
+            currentPromotionIndex--;
+            showPromotion(currentPromotionIndex);
+        }
+
+        function nextPromotion() {
+            currentPromotionIndex++;
+            showPromotion(currentPromotionIndex);
+        }
+
+        function updateButtonsState() {
+            var prevButton = document.querySelector('.btn-primary:first-child');
+            var nextButton = document.querySelector('.btn-primary:last-child');
+
+            if (currentPromotionIndex === 0) {
+                prevButton.disabled = true;
+            } else {
+                prevButton.disabled = false;
+            }
+
+            if (currentPromotionIndex === promotionsCount - 1) {
+                nextButton.disabled = true;
+            } else {
+                nextButton.disabled = false;
+            }
+        }
+
+        updateButtonsState();
+    </script>
 </body>
 </html>
