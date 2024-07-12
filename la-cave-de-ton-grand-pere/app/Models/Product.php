@@ -8,7 +8,6 @@ class Product extends Model
 {
     protected $fillable = ['name', 'description', 'price', 'image'];
 
-    // Relations
     public function categories()
     {
         return $this->belongsToMany(Category::class);

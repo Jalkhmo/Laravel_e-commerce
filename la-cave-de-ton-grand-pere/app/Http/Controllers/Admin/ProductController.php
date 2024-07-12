@@ -36,7 +36,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
-        $product->promo = $request->has('promo'); // Checkbox value handling
+        $product->promo = $request->has('promo');
 
         $product->save();
 
